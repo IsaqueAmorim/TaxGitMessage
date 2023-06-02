@@ -5,21 +5,27 @@ const buttonCopiar = document.getElementById('button-copiar');
 
 const gerarMensagerCommit = () =>{
 
-    const chamadoCommit = document.getElementById('chamado-commit').value;
-    const tempoGasto = document.getElementById('tempo-commit').value;
-    const statusCommit = document.getElementById('select-box').value;
-    const mensagemCommit = document.getElementById('mensagem-commit').value;
-    
-    let mensagem = `git commit -m "${mensagemCommit} (${statusCommit} #${validarNumeroChamado(chamadoCommit)} @${validarTempo(tempoGasto)}min)"`;
-    console.log("Teste");
-    resultadoInput.value = mensagem;
+        const chamadoCommit = document.getElementById('chamado-commit').value;
+        const tempoGasto = document.getElementById('tempo-commit').value;
+        const statusCommit = document.getElementById('select-box').value;
+        const mensagemCommit = document.getElementById('mensagem-commit').value;
+
+    if(validarNumeroChamado(chamadoCommit != false || validarTempo(tempoGasto != false))){
+        let mensagem = `git commit -m "${mensagemCommit} (${statusCommit} #${validarNumeroChamado(chamadoCommit)} @${validarTempo(tempoGasto)}min)"`;
+        console.log("Teste");
+        resultadoInput.value = mensagem;
+    }
 }
 const gerarNomeDeBranch = () =>{
-    const chamadoBranch = document.getElementById('chamado-branch').value;
-    const nomeBranch = document.getElementById('branch-mensagem').value;
-    let mensagem = `git checkout -b ${validarNumeroChamado(chamadoBranch)}-${converterNomeDaBranch(nomeBranch)}`;
+    if(validarNumeroChamado(chamadoBranch) != false){
+        const chamadoBranch = document.getElementById('chamado-branch').value;
+        const nomeBranch = document.getElementById('branch-mensagem').value;
+        let mensagem = `git checkout -b ${validarNumeroChamado(chamadoBranch)}-${converterNomeDaBranch(nomeBranch)}`;
+        resultadoInput.value = mensagem;
+    }
+   
 
-    resultadoInput.value = mensagem;
+   
 }
 
 commitButton.addEventListener('click',gerarMensagerCommit);
