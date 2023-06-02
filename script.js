@@ -17,9 +17,9 @@ const gerarMensagerCommit = () =>{
     }
 }
 const gerarNomeDeBranch = () =>{
-    if(validarNumeroChamado(chamadoBranch) != false){
-        const chamadoBranch = document.getElementById('chamado-branch').value;
+    const chamadoBranch = document.getElementById('chamado-branch').value;
         const nomeBranch = document.getElementById('branch-mensagem').value;
+    if(validarNumeroChamado(chamadoBranch) != false){
         let mensagem = `git checkout -b ${validarNumeroChamado(chamadoBranch)}-${converterNomeDaBranch(nomeBranch)}`;
         resultadoInput.value = mensagem;
     }
