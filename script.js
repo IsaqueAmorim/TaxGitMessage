@@ -46,6 +46,7 @@ const validarNumeroChamado = (chamado) =>{
     }else{
         if(numero.length < 4 || numero.length > 7){
                    alert("O Chamado deve ter entre 4 e 7 caracteres");
+                   return false;
         }else{
             return numero;
         }
@@ -68,6 +69,7 @@ const validarTempo =(tempo) =>{
 
     if(!regex.test(tempo)){
         alert("O  prdrão aceito é deve conter apenas horas e minutos.");
+        return false;
     }
     else{
         return tempo;
