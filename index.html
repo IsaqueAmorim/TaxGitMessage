@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Padronizador de Textos</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="./script.js"></script>
+</head>
+<body>
+    <h1>Gerar Mensages do <span>Git</span></h1>
+    <section id="Main">
+        <div class="commit-message-container">
+            <h3>Gerar Mesangen de Commit</h3>
+            <input id="chamado-commit" placeholder="Numero do Chamado" type="text">
+            <input id="mensagem-commit" placeholder="Mesangem de Commit" type="text">
+            <input id="tempo-commit" placeholder="Tempo Gasto"/>
+            <select id="select-box" name="" id="">
+                <option value="refs">REFS</option>
+                <Option value="closes">Closes</Option>
+            </select>
+            <button id="button-commit" class="gerar-commit">Gerar</button>
+            
+        </div>
+        <div style="margin-bottom: 100px;" class="commit-branch-container">
+            <h3>Gerar Nome de Branch</h3>
+            <input id="chamado-branch" placeholder="Numero do Chamado" type="text">
+            <input id="branch-mensagem" style="width: 522px;" placeholder="Nome da Branch" type="text">
+            <button class="gerar-commit">Gerar</button>
+        </div>
+
+        <h3>Resultado</h3>
+        <input id="resultado" disabled style="width: 735px;" type="text" value="teste">
+        <button id="button-branch" class="gerar-commit">Copiar</button>
+    </section>
+
+</body>
+</html>
