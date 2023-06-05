@@ -10,7 +10,7 @@ const gerarMensagerCommit = () =>{
         const statusCommit = document.getElementById('select-box').value;
         const mensagemCommit = document.getElementById('mensagem-commit').value;
 
-    if(validarNumeroChamado(chamadoCommit != false || validarTempo(tempoGasto != false))){
+    if(validarNumeroChamado(chamadoCommit == false || validarTempo(tempoGasto == false))){
         let mensagem = `git commit -m "${mensagemCommit} (${statusCommit} #${validarNumeroChamado(chamadoCommit)} @${validarTempo(tempoGasto)}min)"`;
         console.log("Teste");
         resultadoInput.value = mensagem;
