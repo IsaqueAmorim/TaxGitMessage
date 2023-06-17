@@ -10,7 +10,7 @@ const gerarMensagerCommit = () =>{
         const statusCommit = document.getElementById('select-box').value;
         const mensagemCommit = document.getElementById('mensagem-commit').value;
 
-    if(validarNumeroChamado(chamadoCommit) != false || validarTempo(tempoGasto) != false){
+    if(validarNumeroChamado(chamadoCommit) != false && validarTempo(tempoGasto) != false){
         let mensagem = `git commit -m "${mensagemCommit} (${statusCommit} #${validarNumeroChamado(chamadoCommit)} @${validarTempo(tempoGasto)}min)"`;
         console.log("Teste");
         resultadoInput.value = mensagem;
@@ -23,9 +23,6 @@ const gerarNomeDeBranch = () =>{
         let mensagem = `git checkout -b ${validarNumeroChamado(chamadoBranch)}-${converterNomeDaBranch(nomeBranch)}`;
         resultadoInput.value = mensagem;
     }
-   
-
-   
 }
 
 commitButton.addEventListener('click',gerarMensagerCommit);
@@ -57,7 +54,6 @@ const validarNumeroChamado = (chamado) =>{
             return numero;
         }
     }
-    
 }
 const converterNomeDaBranch = (mensagem) =>{
     let texto = padronizarNome(mensagem);
@@ -65,11 +61,14 @@ const converterNomeDaBranch = (mensagem) =>{
     return texto.toLowerCase();
 }
 const padronizarNome = (str) => {
-	return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Remove acentos
-		.replace(/([^\w]+|\s+)/g, '-') // Substitui espaço e outros caracteres por hífen
-		.replace(/\-\-+/g, '-')	// Substitui multiplos hífens por um único hífen
-		.replace(/(^-+|-+$)/, ''); // Remove hífens extras do final ou do inicio da string
-}
+    const semAcentos = str.normalize('NFD').replace(/[\u0300-\u036f]/g, ''); // Remove acentos
+    const semParentesesNoFinal = semAcentos.replace(/\((.*?)\)$/g, '$1'); // Remove parênteses no final da string
+    const substituido = semParentesesNoFinal.replace(/[^\w\s()-]+/g, '-'); // Substitui caracteres especiais (exceto parênteses) por hífen
+    return substituido
+      .replace(/\s+/g, '-') // Substitui espaços por hífen
+      .replace(/\-\-+/g, '-') // Substitui múltiplos hífens por um único hífen
+      .replace(/(^-+|-+$)/g, ''); // Remove hífens extras do final ou do início da string
+};
 const validarTempo =(tempo) =>{
     const regex = /^\d{1,2}h\d{1,2}$/;
 
@@ -80,7 +79,4 @@ const validarTempo =(tempo) =>{
     else{
         return tempo;
     }
-}
-const copiarValue = ()=>{
-
 }
