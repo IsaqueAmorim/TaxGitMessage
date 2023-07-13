@@ -24,7 +24,6 @@ const gerarMensagemCommit = () => {
     alert("Deve conter apenas horas e minutos.");
     return;
   }
-  debugger
   if (!ehNumeroChamadoValido(chamadoCommit)) {
     return;
   }
