@@ -46,7 +46,7 @@ const gerarNomeDeBranch = () => {
     return;
   }
 
-  let mensagem = `git checkout -b "${formataNumeroChamado(mensagemCommit)}-${converterNomeDaBranch(nomeBranch)}`;
+  let mensagem = `git checkout -b ${formataNumeroChamado(chamadoBranch)}-${converterNomeDaBranch(nomeBranch)}`;
   
   if (resultadoInput) {
     resultadoInput.value = mensagem;
